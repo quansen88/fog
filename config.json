@@ -1,6 +1,6 @@
 {
   "name": "fog",
-  "version": "1.1",
+  "version": "1.2-black_cat",
   "author": "Ericam_",
   "repository": "https://github.com/850552586/gridea-theme-fog",
   "customConfig": [ {
@@ -49,7 +49,7 @@
   },
   {
     "name": "elegantMen",
-    "label": "优雅模式武侠风",
+    "label": "优雅模式仙侠风",
     "group": "布局",
     "value": true,
     "type": "switch",
@@ -667,7 +667,7 @@
     {
       "name": "fog_go",
       "label": "是否开启探索其他fog小伙伴的飞行通道",
-      "group": "御风飞行",
+      "group": "FooogGo[御风飞行]",
       "value": true,
       "type": "switch",
       "note": "fog1.0版本福利功能，结束时间不定~"
