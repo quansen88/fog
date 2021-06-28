@@ -1,0 +1,349 @@
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    /*��ʼ״̬ ͸����Ϊ0*/
+    40% {
+        opacity: 0;
+    }
+
+    /*����״̬ ͸����Ϊ0*/
+    100% {
+        opacity: 1;
+    }
+
+    /*����״̬ ͸����Ϊ1*/
+}
+
+@-webkit-keyframes fade-in {
+
+    /*���webkit�ں�*/
+    0% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.allcontent {
+    height: auto;
+    min-height: 100vh;
+    justify-content: left;
+    text-align: left;
+    animation: fade-in;
+    /*��������*/
+    animation-duration: 1s;
+    /*��������ʱ��*/
+    -webkit-animation: fade-in 1s;
+    /*���webkit�ں�*/
+}
+
+
+#articlecontent {
+    background: white;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, .5);
+    /*考虑浏览器兼容性*/
+    -moz-box-shadow: 10px 10px 10px rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, .5);
+    border-radius: 10px;
+}
+
+blockquote{
+    background-color: #eff8f0;
+    border-color: #5cb85c;
+}
+
+summary{
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top:10px;
+}
+
+.text {
+
+    padding-top: 60px;
+    padding-bottom: 50px;
+    z-index: 5;
+}
+
+.text img {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.prev-post {
+    margin-top: 10px;
+    background: white;
+    font-size: 1.4em;
+    color: black;
+}
+
+.next-post {
+    background: white;
+    font-size: 1.4em;
+    color: black;
+}
+
+.prev-post a,
+.next-post a {
+    color: black;
+    font-family: "Microsoft JhengHei", miranafont, "Hiragino Sans GB", STXihei, "Microsoft YaHei", SimSun, Sans-Serif;
+    font-weight: lighter;
+    padding: 2px;
+    font-size: 16px;
+}
+
+.prev-post a:hover,
+.next-post a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+#texttitle {
+    padding-top: 50px;
+}
+
+.readercount {
+    opacity: 0.7;
+    font-weight: lighter;
+}
+
+
+.imgloading{
+    padding: 30%;
+    border-radius: 20px;
+    background: rgba(204,204,214,0.4);
+}
+
+
+@media screen and (min-width: 1200px) {
+
+    .prev-post,
+    .next-post {
+        display: none;
+    }
+
+    .prev-post-pc,
+    .next-post-pc {
+        display: block;
+    }
+
+    .allcontent .postdate,
+    .allcontent .poststatus,
+    .allcontent .posttag {
+        font-size: 15px;
+    }
+
+    #texttitle {
+        margin-top: 50px;
+    }
+
+    .postimage {
+        width: 100%;
+    }
+
+    .allcontent #vcomments {
+        margin-top: 100px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    #articlecontent{
+        background: none;
+    }
+
+    .postpadding{
+        padding: 0;
+    }
+
+    #postdetail{
+        margin-top: 5vh;
+    }
+
+    .prev-post,
+    .next-post {
+        margin-top: 25px;
+        border: solid;
+        border-radius: 10px;
+        box-shadow: 2ch;
+        padding: 0;
+        display: block;
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    .prev-post-pc,
+    .next-post-pc {
+        display: none;
+    }
+
+    #articlecontent{
+        box-shadow: none;
+        border-radius: 0;
+    }
+}
+
+#npcontainer {
+    float: right;
+    width: 35%;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, .5);
+    /*考虑浏览器兼容性*/
+    -moz-box-shadow: 10px 10px 10px rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, .5);
+    border-radius: 10px;
+    cursor: pointer;
+    max-height: 200px;
+}
+
+#ppcontainer {
+    float: left;
+    width: 35%;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, .5);
+    /*考虑浏览器兼容性*/
+    -moz-box-shadow: 10px 10px 10px rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, .5);
+    border-radius: 10px;
+    cursor: pointer;
+    max-height: 200px;
+}
+
+.opimg {
+    border-radius: 10px 10px 0 0;
+    height: 200px;
+}
+
+.optitle {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    background: white;
+    margin: 0;
+    padding: 10px;
+    opacity: 0.5;
+    text-align: center;
+    border-radius: 0 0 10px 10px;
+}
+
+.sharebtn {
+    width: 30%;
+    border: none;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2F80ED, #56CCF2);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border: none;
+    border-color: #B0E0E6;
+    color: white;
+    padding:10px;
+    border-radius: 10px;
+}
+
+.sharebtn:focus {
+    outline: none;
+}
+
+
+.shareicon{
+    width: 30px;
+    margin-left: 10px;
+}
+
+#otherpost {
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+.sharebtnContainer {
+    background: white;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.shareContainer {
+    background: white;
+    padding-bottom: 10px;
+    background: white;
+    text-align: right;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.postdetailimg {
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, .5);
+    /*考虑浏览器兼容性*/
+    -moz-box-shadow: 10px 10px 10px rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, .5);
+    border-radius: 5px;
+    width:100%;overflow: hidden;
+    max-height: 70vh;
+}
+
+.donateContainer {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.donatebtn{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: rgba(#ec2d7a,0.7);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-family: kaiti;
+    font-weight: bold;
+}
+
+.donateImg {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: solid lightgrey;
+}
+
+.donate {
+    width: 200px;
+    height: 200px;
+    display: none;
+}
+
+.postfooter {
+    margin-top: 10px;
+    margin-left: 3%;
+    margin-right: 3%;
+    padding-bottom: 50px;
+}
+
+.post-copyright {
+    margin: 2em 0 0;
+    padding: 0.5em 1em;
+    border-left: 3px solid #ff1700;
+    background-color: #f9f9f9;
+    list-style: none;
+}
+
+.post-copyright li {
+    padding: 5px;
+}
+
+.lazyload{
+    cursor: pointer;
+}

@@ -1,0 +1,148 @@
+<link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/font-awesome.css%>">
+
+<body>
+    <div class="allcontent" id="postdetail">
+        <div class="postshow postpadding" style="padding-bottom: 0;">
+            <% if (themeConfig.showFeatureImage && post.feature) { %>
+            <div class="postdetailimg">
+                <img src="<%= post.feature%>" class="postimage" style="cursor:auto">
+            </div>
+            <div class="postinfo-detail">
+                <div class="postdate"><i class="fa fa-calendar"></i><%= post.dateFormat %></div>
+                <div class="poststatus postdate"><i class="fa fa-clock-o"></i> <%= post.stats.text %></div>
+                <div class="posttag">
+                    <% post.tags.forEach(function(tag) { %>
+                    <a data-pjax href="<%= tag.link %>" class="postlink">
+                        <i class="fa fa-tag"></i> <%= tag.name %>
+                    </a>
+                    <% }); %>
+                </div>
+            </div>
+            <% } else {%>
+            <div class="postdetailimg">
+                <%if(site.customConfig.bgchoice=='default'){%>
+                <img src="<%= site.customConfig['postdefaultimage'] %>" class="postimage">
+                <%}else{%>
+                <img src="<%= site.customConfig['postdefaultimagelink'] %>" class="postimage">
+                <%}%>
+            </div>
+            <div class="postinfo-detail">
+                <div class="postdate"><i class="fa fa-calendar"></i><%= post.dateFormat %></div>
+            <div class="poststatus postdate"><i class="fa fa-clock-o"></i> <%= post.stats.text %></div>
+            <div class="posttag">
+                <% post.tags.forEach(function(tag) { %>
+                <a data-pjax href="<%= tag.link %>" class="postlink">
+                    <i class="fa fa-tag"></i> <%= tag.name %>
+                </a>
+                <% }); %>
+            </div>
+        </div>
+        <% } %>
+        <div id="articlecontent">
+            <div id="texttitle" style="text-align: center">
+                <h2 id="ptitle"><%= post.title %></h2>
+                <!-- id 将作为查询条件 -->
+                <div id="pl" style="display:none"><%=post.link%></div>
+                <div id="rootaddr" style="display:none"><%= themeConfig.domain %></div>
+                <%if(site.customConfig.postnumChoice){%>
+                    <span id="hotnum">
+                        <h4><i class="fa fa-eye" aria-hidden="true" style="color: #FF8C00;"></i>&nbsp;&nbsp;热度</i>: <i
+                                class="hotnum">loading...</i></h4>
+                    </span>
+                <%}%>
+            </div>
+            <div class="text ">
+                <%- post.content %>
+            </div>
+            <hr style="width: 80%;">
+            <%if(site.customConfig.donateChoice==true){%>
+            <div class="donateContainer">
+                <span class="donatebtn">赏</span>
+            </div>
+            <div class="donateContainer">
+                <img src="<%= site.customConfig.donateImg%>" alt="" class="donate">
+            </div>
+            <%}%>
+            <div class="postfooter">
+                <ul class="post-copyright">
+                    <li><strong>文章作者：</strong><%= site.customConfig.postAuthor%></li>
+            <li><strong>原文链接：</strong><%= post.link%></li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用<i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA
+                许可协议。转载请注明出处！</li>
+            </ul>
+        </div>
+        <%if(site.customConfig.shareChoice==true){%>
+            <div class="shareContainer">
+                <div class="share" style="height:30px;background: white;">
+                    <a class="qq" href=""><i><img class="shareicon"
+                                src="<%= themeConfig.domain %>/media/images/qqs.png%>" alt=""></i></a>
+                    <a class="wechat" href=""><i><img class="shareicon"
+                                src="<%= themeConfig.domain %>/media/images/wechats.png%>" alt=""></i></a>
+                    <a class="weibo" href=""><i><img class="shareicon"
+                                src="<%= themeConfig.domain %>/media/images/weibos.png%>" alt=""></i></a>
+                    <a class="qzone" href=""><i><img class="shareicon"
+                                src="<%= themeConfig.domain %>/media/images/qzones.png%>" alt=""></i></a>
+                    <a class="douban" href=""><i><img class="shareicon"
+                                src="<%= themeConfig.domain %>/media/images/doubans.png%>" alt=""></i></a>
+                    <a class="facebook" href=""><i><img class="shareicon"
+                                src="<%= themeConfig.domain %>/media/images/facebooks.png%>" alt=""></i></a>
+                    <a class="twitter" href=""><i><img class="shareicon"
+                                src="<%= themeConfig.domain %>/media/images/twitter.png%>" alt=""></i></a>
+                </div>
+            </div>
+            <%}%>
+        <div id="otherpost">
+            <% if (post.prevPost && !post.hideInList) { %>
+            <a  data-pjax class="prev-post-pc" href="<%=post.prevPost.link%>"  style="color: black;">
+                <div id="ppcontainer">
+                    <% if (themeConfig.showFeatureImage && post.prevPost.feature) { %>
+                    <img src="<%= post.prevPost.feature%>" style="width: 100%;" class="opimg">
+                    <% } else {%>
+                    <%if(site.customConfig.bgchoice=='default'){%>
+                    <img src="<%= site.customConfig['postdefaultimage'] %>" style="width: 100%;" class="opimg">
+                    <%}else{%>
+                    <img src="<%= site.customConfig['postdefaultimagelink'] %>" style="width: 100%;" class="opimg">
+                    <%}%>
+                    <%}%>
+                    <h4 class="optitle"><%= post.prevPost.title%></h4>
+                </div>
+            </a>
+            <div class="prev-post">
+                上一篇 <a  data-pjax href="<%= post.prevPost.link%>"><%= post.prevPost.title%></a>
+            </div>
+            <% } %>
+            <% if (post.nextPost && !post.hideInList) { %>
+            <a data-pjax class="next-post-pc" href="<%=post.nextPost.link%>"  style="color: black;">
+                <div id="npcontainer">
+                    <% if (themeConfig.showFeatureImage && post.nextPost.feature) { %>
+                    <img src="<%= post.nextPost.feature%>" style="width: 100%;" class="opimg">
+                    <% } else {%>
+                    <%if(site.customConfig.bgchoice=='default'){%>
+                    <img src="<%= site.customConfig['postdefaultimage'] %>" style="width: 100%;" class="opimg">
+                    <%}else{%>
+                    <img src="<%= site.customConfig['postdefaultimagelink'] %>" style="width: 100%;" class="opimg">
+                    <%}%>
+                    <%}%>
+                    <h4 class="optitle"><%= post.nextPost.title%></h4>
+                </div>
+            </a>
+            <div class="next-post">
+                下一篇 <a  data-pjax href="<%= post.nextPost.link%>"><%= post.nextPost.title%></a>
+            </div>
+            <% } %>
+        </div>
+    </div>
+    </div>
+    </div>
+    <!-- 弹窗 -->
+    <div id="myModal" class="modal">
+        <img class="modal-content" id="img01">
+    </div>
+</body>
+<script>
+    //文章阅读热度
+    var pl = $("#pl").html();
+    var rootaddr = $("#rootaddr").html();
+    pl = pl.replace(rootaddr, "");
+    $("#hotnum").attr('id', pl);
+</script>

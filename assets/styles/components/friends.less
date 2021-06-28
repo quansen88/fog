@@ -1,0 +1,254 @@
+@keyframes fade-in {  
+    0% {opacity: 0;}/*初始状态 透明度为0*/  
+    40% {opacity: 0;}/*过渡状态 透明度为0*/  
+    100% {opacity: 1;}/*结束状态 透明度为1*/  
+}  
+@-webkit-keyframes fade-in {/*针对webkit内核*/  
+    0% {opacity: 0;}  
+    40% {opacity: 0;}  
+    100% {opacity: 1;}  
+} 
+
+#friendscontainer{
+    position: relative;
+    z-index: 999;
+}
+
+#friendsrule{
+    background:rgba(#93d5dc,0.4);
+    margin-left:5%;
+    width: 90%;
+    padding: 30px;
+    min-height:50px;
+    text-align:left;
+    color:white;
+    border-radius:5px;
+    border-left:#22a2c3 10px solid;
+    border-right:#22a2c3 10px solid;
+    font-size:20px;
+}
+
+@media screen and (max-width: 1200px) {
+    #pcintroimg{
+        display:none
+    }
+
+    #friendscontainermobile {
+        margin-top: 60px;
+        position: relative;
+        min-height: 70vh;
+        display: block;
+        animation: fade-in;/*动画名称*/  
+        animation-duration: 1s;/*动画持续时间*/  
+        -webkit-animation:fade-in 1s;/*针对webkit内核*/  
+        width: 100vw;
+    }
+
+    .fricontent{
+        width: 90%;
+    }
+
+    #friendscontainer {
+        display: none;
+    }
+
+    .friend-box img {
+        height: 100px;
+        width: 100px;
+        border-radius: 10px;
+        overflow: hidden;
+        float: left;
+        overflow: hidden;
+    }
+
+    .friend-box {
+        border-radius: 10px;
+        cursor: pointer;
+        background: black;
+        width: 100%;
+        height: 100px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 0;
+    }
+
+    .flink-info {
+        padding: 5px;
+        color: white;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+
+    .friend-box .title {
+        margin-top: 10px;
+        color: white;
+        font-size: 24px;
+        font-weight: 600;
+        text-decoration: none;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #pcintroimg{
+        margin-top:20px;
+        display:flex;
+        justify-content:center;
+    }
+
+    .sea {
+        width: 500px;
+        height: 200px;
+        background-color: whitesmoke;
+        border-radius: 5px;
+        box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .sea .title {
+        color: white;
+        font-size: 24px;
+        font-family: serif;
+        text-align: center;
+        line-height: 250px;
+        text-transform: uppercase;
+        letter-spacing: 0.4em;
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+    }
+    
+    .sea .wave {
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        border-radius: 43%;
+        top: -650px;
+        left: calc((350px - 650px) / 2);
+        animation: drift linear infinite;
+        transform-origin: 50% 48%;
+    }
+    
+    .sea .wave:nth-of-type(1) {
+        background: deepskyblue;
+        filter: opacity(0.4);
+        animation-duration: 5s;
+    }
+    
+    .sea .wave:nth-of-type(2) {
+        background: deepskyblue;
+        filter: opacity(0.4);
+        animation-duration: 7s;
+    }
+    
+    .sea .wave:nth-of-type(3) {
+        background-color: orangered;
+        filter: opacity(0.1);
+        animation-duration: 9s;
+    }
+    
+    @keyframes drift {
+        from {
+            transform: rotate(1turn);
+        }
+    }
+
+    #friendscontainermobile {
+        display: none;
+    }
+
+    #friendscontainer {
+        display: block;
+    }
+
+    #friendscontainer {
+        margin-top:50px;
+        min-height: 80vh;
+        animation: fade-in;/*动画名称*/  
+        animation-duration: 1s;/*动画持续时间*/  
+        -webkit-animation:fade-in 1s;/*针对webkit内核*/  
+        border-radius: 20px;
+    }
+
+    /* ---------------------------------用户信息展示表单 ------------------------------*/
+    #friendscontainer .infoForm {
+        float: left;
+        width: 40%;
+        height: 70px;
+        margin-top: 20px;
+        margin-left: 50px;
+        flex-direction: column;
+        box-shadow: inset 0 0 0 300px
+            /*渲染阴影*/
+            #363636;
+        opacity: 0.8;
+        text-align: center;
+        z-index: 100;
+        border-radius: 18px;
+        overflow:hidden;
+        line-height:5px;
+        word-wrap:break-word;
+        cursor: pointer;
+    }
+
+
+
+    #friendscontainer .favatar {
+        width: 70px;
+        height: 70px;
+        overflow: hidden;
+        float: left;
+        display: inline;
+        opacity: 1;
+    }
+
+    #friendscontainer .infoForm h2,
+    #friendscontainer .infoForm h3 {
+        color: white;
+        font-weight: lighter;
+        margin-top:10px;
+    }
+    #friendscontainer .infoForm h2{
+        color: antiquewhite;
+        font-size:20px;
+    }
+    #friendscontainer .infoForm h3{
+        font-size:15px;
+        margin:0;
+        margin-top:5px;
+        white-space:nowrap;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .fcl{
+        width: 100%;
+        margin-left: 5%;
+    }
+
+    .fct{
+        width: 70%;
+        margin-left: 5%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .archives-content ul li>span {
+        display: none;
+    }
+
+    .archives-content ul {
+        padding: 0px;
+    }
+
+
+    .fcl,.fct{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 750px){
+    .fcl{
+        width: 100vw;
+    }
+}

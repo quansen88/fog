@@ -1,0 +1,676 @@
+{
+  "name": "fog",
+  "version": "gitCat1.2.1",
+  "author": "quansen88",
+  "repository": "https://github.com/quansen88/fog/tree/gitCat",
+  "customConfig": [ {
+    "name": "live2d",
+    "label": "是否开启看板娘",
+    "group": "布局",
+    "value": true,
+    "type": "switch",
+    "note": ""
+  },
+  {
+    "name": "menuposition",
+    "label": "菜单栏布局",
+    "group": "布局",
+    "value": "left",
+    "type": "select",
+    "options": [
+      {
+        "label": "顶部",
+        "value": "top"
+      },
+      {
+        "label": "左侧",
+        "value": "left"
+      }
+    ],
+    "note": "两种风格"
+  },
+  {
+    "name": "postlistMode",
+    "label": "文章列表风格",
+    "group": "布局",
+    "value": "default",
+    "type": "select",
+    "options": [
+      {
+        "label": "经典模式",
+        "value": "default"
+      },
+      {
+        "label": "优雅模式",
+        "value": "elegant"
+      }
+    ],
+    "note": "两种风格"
+  },
+  {
+    "name": "elegantMen",
+    "label": "优雅模式仙侠风",
+    "group": "布局",
+    "value": true,
+    "type": "switch",
+    "note": ""
+  },
+    {
+      "name": "sitenameColor",
+      "group": "颜色",
+      "value": "antiquewhite",
+      "type": "input",
+      "card": "color",
+      "note": "网站名称颜色 默认：antiquewhite"
+    },
+    {
+      "name": "sitedescribtionColor",
+      "group": "颜色",
+      "value": "white",
+      "type": "input",
+      "card": "color",
+      "note": "网站描述颜色 默认：white"
+    },
+    {
+      "name": "sitemenuColor",
+      "group": "颜色",
+      "value": "antiquewhite",
+      "type": "input",
+      "card": "color",
+      "note": "网站菜单按钮颜色 默认：antiquewhite"
+    },
+    {
+      "name": "titleWithImgColor",
+      "group": "颜色",
+      "value": "white",
+      "type": "input",
+      "card": "color",
+      "note": "有封面图文章标题颜色 默认：white"
+    },
+    {
+      "name": "titleWithoutImgColor",
+      "group": "颜色",
+      "value": "white",
+      "type": "input",
+      "card": "color",
+      "note": "无封面图文章标题颜色 默认：white"
+    },
+    {
+      "name": "footinfoColor",
+      "group": "颜色",
+      "value": "white",
+      "type": "input",
+      "card": "color",
+      "note": "底部信息颜色（默认:white）"
+    },
+    {
+      "name": "appinfoColor",
+      "group": "颜色",
+      "value": "white",
+      "type": "input",
+      "card": "color",
+      "note": "手机端博客首页网站描述颜色（默认:white）"
+    },
+    {
+      "name": "topmenuColor",
+      "group": "颜色",
+      "value": "black",
+      "type": "input",
+      "card": "color",
+      "note": "顶部菜单栏颜色(空值则为透明色)"
+    },
+    {
+      "name": "sitenameFont",
+      "label": "站点名称字体",
+      "group": "字体",
+      "value": "Arial",
+      "type": "input",
+      "note": ""
+    },
+    {
+      "name": "sitedescFont",
+      "label": "站点介绍字体",
+      "group": "字体",
+      "value": "Arial",
+      "type": "input",
+      "note": ""
+    },
+    {
+      "name": "siteinfoFont",
+      "label": "站点文章信息字体",
+      "group": "字体",
+      "value": "Arial",
+      "type": "input",
+      "note": ""
+    },
+    {
+      "name": "sitemenuFont",
+      "label": "菜单栏字体",
+      "group": "字体",
+      "value": "kaiti",
+      "type": "input",
+      "note": ""
+    },
+    {
+      "name": "postFont",
+      "label": "文章正文字体",
+      "group": "字体",
+      "value": "Noto Serif SC",
+      "type": "input",
+      "note": ""
+    },
+    {
+      "name": "sitegotimeChoice",
+      "label": "是否开启站点创建时间",
+      "group": "统计",
+      "value": false,
+      "type": "switch",
+      "note": ""
+    },
+    {
+      "name": "sitegotime",
+      "label": "站点创建时间",
+      "group": "统计",
+      "value": "02/22/2020",
+      "type": "input",
+      "note": "输入日期（格式:02/22/2020）"
+    },
+    {
+      "name": "sitenumChoice",
+      "label": "是否开启访客统计",
+      "group": "统计",
+      "value": false,
+      "type": "switch",
+      "note": "不蒜子会影响网页加载速度，请慎重考虑！"
+    },
+    {
+      "name": "postnumChoice",
+      "label": "是否开启文章阅读量统计",
+      "group": "统计",
+      "value": false,
+      "type": "switch",
+      "note": "需要在配置页面填写Leancloud_id和key值！"
+    },
+    {
+      "name": "recordText",
+      "label": "备案信息",
+      "group": "统计",
+      "value": "Copyright © 2020  备案号: 鄂ICP备...号",
+      "type": "input",
+      "note": "填写网站备案号，如无则空着即可"
+    },
+    {
+      "name": "postAuthor",
+      "label": "文章作者",
+      "group": "文章",
+      "value": "",
+      "type": "input",
+      "note": "博客文章下版权声明内的作者名称"
+    },
+    {
+      "name": "shareChoice",
+      "label": "是否开启文章分享转载功能",
+      "group": "文章",
+      "value": true,
+      "type": "switch",
+      "note": ""
+    },
+    {
+      "name": "donateChoice",
+      "label": "是否开启文章赞赏功能",
+      "group": "文章",
+      "value": true,
+      "type": "switch",
+      "note": "请在下方放置赞赏图片外链"
+    },
+    {
+      "name": "donateImg",
+      "label": "赞赏图",
+      "group": "文章",
+      "value": "",
+      "type": "input",
+      "note": "请输入图片外链"
+    },
+    {
+      "name": "commentschoice",
+      "label": "第三方评论系统选择",
+      "group": "配置",
+      "value": "valine",
+      "type": "select",
+      "note":"valine需要配置Leancloud，twikoo需要配置cloudbase",
+      "options": [
+        {
+          "label": "不使用",
+          "value": "default"
+        },
+        {
+          "label": "valine",
+          "value": "valine"
+        },
+        {
+          "label": "twikoo",
+          "value": "twikoo"
+        }
+      ]
+    },
+    {
+      "name": "Leancloud_appId",
+      "label": "Leancloud_appId",
+      "group": "配置",
+      "value": "",
+      "type": "input",
+      "note": "[valine/阅读量统计] Leancloud_appId"
+    },
+    {
+      "name": "Leancloud_key",
+      "label": "Leancloud_key",
+      "group": "配置",
+      "value": "",
+      "type": "input",
+      "note": "[valine/阅读量统计] Leancloud_key"
+    },
+    {
+      "name": "twikoo_id",
+      "label": "cloudbase环境id",
+      "group": "配置",
+      "value": "",
+      "type": "input",
+      "note": "[twikoo] 配置查看文档 https://twikoo.js.org/"
+    },
+    {
+      "name": "social_text",
+      "label": "社交按钮名称",
+      "group": "社交",
+      "value": "",
+      "type": "input",
+      "note": "社交按钮上的文字显示"
+    },
+    {
+      "name": "github",
+      "label": "Github",
+      "group": "社交",
+      "value": "",
+      "type": "input",
+      "note": "链接地址"
+    },
+    {
+      "name": "QQ",
+      "label": "QQ",
+      "group": "社交",
+      "value": "",
+      "type": "input",
+      "note": "QQ号"
+    },
+    {
+      "name": "zhihu",
+      "label": "知乎",
+      "group": "社交",
+      "value": "",
+      "type": "input",
+      "note": "链接地址"
+    },
+    {
+      "name": "bilibili",
+      "label": "bilibili",
+      "group": "社交",
+      "value": "",
+      "type": "input",
+      "note": "链接地址"
+    },
+    {
+      "name": "wechat",
+      "label": "wechat",
+      "group": "社交",
+      "value": "",
+      "type": "input",
+      "note": "链接地址"
+    },
+    {
+      "name": "weibo",
+      "label": "weibo",
+      "group": "社交",
+      "value": "",
+      "type": "input",
+      "note": "链接地址"
+    },
+    {
+      "name": "wyy",
+      "label": "网易云",
+      "group": "社交",
+      "value": "",
+      "type": "input",
+      "note": "链接地址"
+    },
+    {
+      "name": "steam",
+      "label": "steam",
+      "group": "社交",
+      "value": "",
+      "type": "input",
+      "note": "链接地址"
+    },
+    {
+      "name": "search",
+      "label": "是否开启搜索框",
+      "group": "搜索框",
+      "value": true,
+      "type": "switch",
+      "note": ""
+    },
+    {
+      "name": "searchplaceholder",
+      "label": "搜索框提示文字",
+      "group": "搜索框",
+      "value": "标题搜索 ⚆_⚆ つ♡",
+      "type": "input",
+      "note": ""
+    },
+    {
+      "name": "bgchoice",
+      "label": "图片加载方式",
+      "group": "背景图",
+      "value": "default",
+      "type": "select",
+      "note":"选择本地上传便在下方选项添加图片，选择外链则在下方输入框输入外链链接【推荐使用外链】",
+      "options": [
+        {
+          "label": "本地上传",
+          "value": "default"
+        },
+        {
+          "label": "外链",
+          "value": "link"
+        }
+      ]
+    },
+    {
+      "name": "postdefaultimagelink",
+      "label": "文章封面默认背景图-外链",
+      "group": "背景图",
+      "value": "",
+      "type": "input"
+    },
+    {
+      "name": "tagimagelink",
+      "label": "标签云页面置顶图-外链",
+      "group": "背景图",
+      "value": "",
+      "type": "input"
+    },
+    {
+      "name": "bgimagelink",
+      "label": "全局背景虚化图-外链",
+      "group": "背景图",
+      "value": "",
+      "type": "input"
+    }, 
+    {
+      "name": "mobilebgimagelink",
+      "label": "移动端首页图-外链",
+      "group": "背景图",
+      "value": "",
+      "type": "input"
+    },
+    {
+      "name": "mobileplbgimagelink",
+      "label": "移动端全局背景图-外链",
+      "group": "背景图",
+      "value": "",
+      "type": "input"
+    },
+    {
+      "name": "postdefaultimage",
+      "label": "文章封面默认背景图",
+      "group": "背景图",
+      "value": "/media/images/postdefault.png",
+      "type": "picture-upload",
+      "note": "本地上传"
+    },
+    {
+      "name": "tagimage",
+      "label": "标签云页面置顶图",
+      "group": "背景图",
+      "value": "/media/images/tagimg.png",
+      "type": "picture-upload",
+      "note": "本地上传"
+    },
+    {
+      "name": "bgimage",
+      "label": "全局背景虚化图",
+      "group": "背景图",
+      "value": "/media/images/bgimg.png",
+      "type": "picture-upload",
+      "note": "本地上传"
+    }, 
+    {
+      "name": "mobilebgimage",
+      "label": "移动端首页图",
+      "group": "背景图",
+      "value": "/media/images/mobilebgimg.jpg",
+      "type": "picture-upload",
+      "note": "本地上传"
+    },
+    {
+      "name": "mobileplbgimage",
+      "label": "移动端全局背景图",
+      "group": "背景图",
+      "value": "",
+      "type": "picture-upload"
+    },
+    {
+      "name": "codetheme",
+      "label": "代码主题",
+      "group": "代码",
+      "value": "default",
+      "type": "select",
+      "options": [
+        {
+          "label": "简约白",
+          "value": "default"
+        },
+        {
+          "label": "vs",
+          "value": "vs2015"
+        },
+        {
+          "label": "rainbow",
+          "value": "rainbow"
+        },
+        {
+          "label": "dracula",
+          "value": "dracula"
+        }
+      ]
+    },
+    {
+      "name": "Mathchoice",
+      "label": "是否开启数学公式",
+      "group": "代码",
+      "value": false,
+      "type": "switch",
+      "note": "开启后支持数学公式（影响博客加载速度）"
+    },
+    {
+      "name": "friendschoice",
+      "label": "是否开启友链",
+      "group": "友链",
+      "value": true,
+      "type": "switch",
+      "note": ""
+    },
+    {
+      "name": "friendsrule",
+      "label": "添加友链提示",
+      "group": "友链",
+      "value": "<p>暂无提示</p><p>暂无提示</p>",
+      "type": "textarea",
+      "note": "提示信息"
+    },
+    {
+      "name": "friends",
+      "label": "友链",
+      "group": "友链",
+      "type": "array",
+      "value": [],
+      "arrayItems": [
+        { "label": "名称", "name": "siteName", "type": "input", "value": "" },
+        { "label": "网站链接", "name": "siteLink", "type": "input", "value": "" },
+        { "label": "头像", "name": "siteLogo", "type": "input", "value": "","note":"外链" },
+        { "label": "描述", "name": "description", "type": "textarea", "value": "" }
+      ],
+      "note": ""
+    },    
+    {
+      "name": "talkchoice",
+      "label": "是否开启说说",
+      "group": "说说",
+      "value": false,
+      "type": "switch",
+      "note": ""
+    },
+    {
+      "name": "talks",
+      "label": "说说",
+      "group": "说说",
+      "type": "array",
+      "value": [],
+      "arrayItems": [
+        { "label": "标签", "name": "author", "type": "input", "value": "" },
+        { "label": "发布时间", "name": "time", "type": "input", "value": "" },
+        { "label": "说说内容", "name": "text", "type": "input", "value": ""},
+        { "label": "配图", "name": "img", "type": "input", "value": "","note":"外链"}
+      ],
+      "note": ""
+    },
+    {
+      "name": "icons",
+      "label": "图标",
+      "group": "图标icon",
+      "type": "array",
+      "value": [],
+      "arrayItems": [
+        { "label": "菜单栏名称", "name": "menuname", "type": "input", "value": "","note":"对应菜单名称"},
+        { "label": "图标（外链）", "name": "iconurl", "type": "input", "value": "","note":"使用默认值 / 或填写图标外链"}
+      ],
+      "note": "默认值：Home / Archive / Tag / About / Talk / Friends (填写时删除空格)"
+    },
+    {
+      "name": "aplayerchoice",
+      "label": "是否开启音乐播放器",
+      "group": "音乐播放器",
+      "value": false,
+      "type": "switch",
+      "note": ""
+    },
+    {
+      "name": "aplayerserver",
+      "label": "源平台",
+      "group": "音乐播放器",
+      "value": "netease",
+      "type": "select",
+      "note":"",
+      "options": [
+        {
+          "label": "网易云",
+          "value": "netease"
+        },
+        {
+          "label": "QQ音乐",
+          "value": "tencent"
+        },
+        {
+          "label": "酷狗",
+          "value": "kugou"
+        },
+        {
+          "label": "虾米",
+          "value": "xiami"
+        },
+        {
+          "label": "百度",
+          "value": "baidu"
+        }
+      ]
+    },
+    {
+      "name": "aplayerid",
+      "label": "歌单ID",
+      "group": "音乐播放器",
+      "value": "",
+      "type": "input",
+      "note": ""
+    },
+    {
+      "name": "aplayerorder",
+      "label": "播放模式",
+      "group": "音乐播放器",
+      "value": "default",
+      "type": "select",
+      "note":"",
+      "options": [
+        {
+          "label": "顺序播放",
+          "value": "default"
+        },
+        {
+          "label": "随机播放",
+          "value": "random"
+        }
+      ]
+    },
+    {
+      "name": "aplayerautoplay",
+      "label": "自动播放",
+      "group": "音乐播放器",
+      "value": false,
+      "type": "switch",
+      "note": ""
+    },
+    {
+      "name": "instantchoice",
+      "label": "即时通讯工具",
+      "group": "即时通讯",
+      "value": "default",
+      "type": "select",
+      "options": [
+        {
+          "label": "不使用",
+          "value": "default"
+        },
+        {
+          "label": "Daovoice",
+          "value": "daovoice"
+        },
+        {
+          "label": "Crisp",
+          "value": "crisp"
+        }
+      ],
+      "note": "请自行查阅介绍"
+    },
+    {
+      "name": "daovoice_id",
+      "label": "app_id",
+      "group": "即时通讯",
+      "value": "",
+      "type": "input",
+      "note": "[使用daovoice时配置]在控制台-安装到网站-appid里的内容复制过来"
+    },
+    {
+      "name": "crisp_id",
+      "label": "网站id",
+      "group": "即时通讯",
+      "value": "",
+      "type": "input",
+      "note": "[使用Crisp时配置] 在设置-网站设置-网站id里的内容复制过来"
+    },   
+    {
+      "name": "fog_go",
+      "label": "是否开启探索其他fog小伙伴的飞行通道",
+      "group": "FooogGo[御风飞行]",
+      "value": true,
+      "type": "switch",
+      "note": "fog1.0版本福利功能，结束时间不定~"
+    }
+  ]
+}

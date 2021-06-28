@@ -1,0 +1,97 @@
+.pagi{
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.pagi ul {
+    margin: 50px 0 0 0;
+    position: relative;
+    left: 0%;
+    display: flex;
+
+    padding: 0;
+    z-index: 3;
+}
+
+.pagi ul li {
+    list-style: none;
+    font-family: sans-serif;
+}
+
+.pagi ul li a {
+    position: relative;
+    display: block;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 40px;
+    background: #353535;
+    color: #565656;
+    text-decoration: none;
+    margin: 5px;
+    border-radius: 4px;
+    box-shadow: inset 0 5px 10px rgba(0, 0, 0, .1), 0 2px 5px rgba(0, 0, 0, .5)
+}
+
+.pagi ul li a.active,
+.pagi ul li a:hover {
+    color: #fff;
+    text-shadow: 0 0 20px rgb(255, 224, 27),
+        0 0 20px rgb(255, 224, 27),
+        0 0 20px rgb(255, 224, 27),
+        0 0 20px rgb(255, 224, 27),
+        0 0 20px rgb(255, 224, 27),
+        0 0 20px rgb(255, 224, 27),
+        0 0 20px rgb(255, 224, 27),
+        0 0 20px rgb(255, 224, 27),
+        0 0 20px rgb(255, 224, 27);
+}
+
+
+@media screen and (max-width: 1200px) {
+    .pagination-container{
+        display: block
+    }
+    .pcpagi{
+        display: none;
+    }
+
+    .pagination-container {
+        margin-top: 30px;
+        display: flex;
+    }
+
+    .pagination-container a {
+        width: 50%;
+        border: solid grey;
+        color: black;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 20%;
+        background: lightblue;
+        font-weight: bold;
+    }
+
+    .pagination-container .mobile-nextpage {
+        border-radius: 0 5px 5px 0;
+    }
+
+    .pagination-container .mobile-prevpage {
+        border-radius: 5 0px 0px 5px;
+    }
+}
+
+
+@media screen and (min-width: 1200px) {
+    .pagination-container{
+        display: none
+    }
+    .pcpagi{
+        display: block;
+    }
+}

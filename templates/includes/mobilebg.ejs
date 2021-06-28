@@ -1,0 +1,10 @@
+<img src="" alt="" class="plbg">
+<script>
+    var bgchoice = "<%= site.customConfig.bgchoice %>";
+    if(bgchoice=='default')
+        var plbgurl = "<%= site.customConfig.mobileplbgimage %>"
+    else  
+        var plbgurl = "<%= site.customConfig.mobileplbgimagelink %>"
+    $(".plbg").attr("src",plbgurl);
+    $(".plbg").fadeIn(200);
+</script>

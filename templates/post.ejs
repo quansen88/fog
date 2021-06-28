@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="<%- post.description %>" />
+    <meta name="keywords" content="<%- post.tags.map(tag => tag.name).join(',') %>" />
+    <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/bootstrap.min.css%>">
+    <link rel="stylesheet" href="<%= themeConfig.domain %>/styles/main.css">
+    <!-- 代码渲染风格css -->
+    <% if(site.customConfig.codetheme == 'default'){ %>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/default.min.css">
+    <% }else if(site.customConfig.codetheme == 'vs2015'){ %>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/vs2015.min.css">
+    <% }else if(site.customConfig.codetheme == 'rainbow'){ %>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/rainbow.min.css">
+    <% }else{ %>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/dracula.min.css">
+    <% } %>
+    <!-- 代码高亮插件 -->
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+    <!-- 代码复制插件 -->
+    <script src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/clipboard.min.js"></script>
+    <!-- live2d插件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/live2d.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
+    <!-- 数学公式 -->
+    <% if (site.customConfig.Mathchoice){ %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.css"
+        integrity="sha384-9tPv11A+glH/on/wEu99NVwDPwkMQESOocs/ZGXPoIiLE8MU/qkqUcZ3zzL+6DuH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.js"
+        integrity="sha384-U8Vrjwb8fuHMt6ewaCy8uqeUXv4oitYACKdB0VziCerzt011iQ/0TqlSlv8MReCm" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/contrib/auto-render.min.js"
+        integrity="sha384-aGfk5kvhIq5x1x5YdvCp4upKZYnA8ckafviDpmWEKp4afOZEqOli7gqSnh8I6enH" crossorigin="anonymous">
+        </script>
+    <script>
+        renderMathInElement(document.body, {
+            delimiters: [{
+                left: "$$",
+                right: "$$",
+                display: true
+            },
+            {
+                left: "$",
+                right: "$",
+                display: false
+            }
+            ]
+        });
+    </script>
+    <% } %>
+    <title><%= post.title %></title>
+
+    <!-- 大纲索引css调整 -->
+    <% if(site.customConfig.menuposition == 'left'){ %>
+    <style>
+        .markdownIt-TOC {
+            margin-left: 28%;
+            padding-left: 2px;
+            width: 80%;
+        }
+
+        .markdownIt-TOC li {
+            padding-left: 8%;
+        }
+    </style>
+    <% }else{ %>
+    <style>
+        .markdownIt-TOC {
+            padding-left: 2px;
+            width: 100%;
+        }
+
+        .markdownIt-TOC li {
+            padding-left: 2%;
+        }
+    </style>
+    <% } %>
+</head>
+
+<body>
+    <div id="landlord">
+        <div class="message" style="opacity:0"></div>
+        <canvas id="live2d" width="240" height="250" class="live2d"></canvas>
+    </div>
+    <div id="domainname" style="display:none"><%= themeConfig.domain %></div>
+    <div id="content">
+        <div>
+            <!----------- 移动端导航栏👇 ----------------->
+            <div id="bar">
+                <%- include('./includes/bar') %>
+            </div>
+            <!----------- 移动端导航栏👆 ----------------->
+
+            <!--------------- pc端菜单栏👇 ---------------->
+            <div class="side"><%- include('./includes/side') %></div>
+            <!--------------- pc端菜单栏👆 ---------------->
+
+            <!-- ----------------左侧菜单栏html 👇-------------------------------------->
+            <% if(site.customConfig.menuposition == 'left'){ %>
+            <div>
+                <div id="tab1" class="tab">
+                    <div class="bars">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="close"></div>
+                </div>
+                <div class="col-md-1 col-lg-3"></div>
+                <!-- main标签，pjax渲染时加载以下内容👇 -->
+                <div id="main" class="col-xs-12 col-sm-12 col-md-12 col-lg-7" style="padding:0;">
+                    <%- include('./includes/post-detail') %>
+                    <div class="toc-container">
+                        <%- post.toc %>
+                    </div>
+                    <div class="tog">
+                        <div class="toggleContainer">
+                            <div class="toggle">
+                                <i class="fas fa-angle-double-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!---------------------------- 评论系统👇 ------------------------->
+                    <div id="comment" class="comment">
+                        <div class="commentcontainer">
+                            <%if(site.customConfig.commentschoice=='valine'){%>
+                                <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
+                                    <%- include('./includes/valine') %>
+                                    <div class="clear"></div>
+                                <%}else{%>
+                                    <p>请到客户端“主题--自定义配置--配置”中填入leancloud_appID和key</p>
+                                <%}%>
+                            <%}else if(site.customConfig.commentschoice=='twikoo'){%>
+                                <%if(site.customConfig.twikoo_id){%>
+                                    <%- include('./includes/twikoo') %>
+                                    <div class="clear"></div>
+                                <%}else{%>
+                                    <p>请到客户端“主题--自定义配置--配置”中填入cloudbase环境id</p>
+                                <%}%>
+                            <%}else if(site.customConfig.commentschoice=='default'){%>
+                                <%if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
+                                    <% if (commentSetting.commentPlatform === 'gitalk') { %>
+                                        <%- include('./includes/gitalk') %>
+                                    <% } %>
+                                    <% if (commentSetting.commentPlatform === 'disqus') { %>
+                                        <%- include('./includes/disqus') %>
+                                    <% } %>
+                                <% } %>
+                            <%}%>
+                        </div>
+                    </div>
+                    <!---------------------------- 评论系统👆 ------------------------->
+                </div>
+                <!-- main标签，pjax渲染时加载以上内容👆 -->
+                <div class="col-md-1 col-lg-2"></div>
+                <div id="bg">
+                </div>
+            </div>
+            <!-- ----------------左侧菜单栏html 👆-------------------------------------->
+            <% }else{ %>
+            <!--------------- 顶部菜单栏html👇--------->
+            <div>
+                <div class="col-lg-3"></div>
+                <!-- main标签，pjax渲染时加载以下内容👇 -->
+                <div id="main" class="col-xs-12 col-sm-12 col-md-12  col-lg-6 posttop" style="padding:0;">
+                    <%- include('./includes/post-detail') %>
+                    <div class="toc-container">
+                        <%- post.toc %>
+                    </div>
+                    <div class="tog">
+                        <div class="toggleContainer">
+                            <div class="toggle">
+                                <i class="fas fa-angle-double-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!---------------------------- 评论系统👇 ------------------------->
+                    <div id="comment" class="comment">
+                        <div class="commentcontainer">
+                            <%if(site.customConfig.commentschoice=='valine'){%>
+                                <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
+                                    <%- include('./includes/valine') %>
+                                    <div class="clear"></div>
+                                <%}else{%>
+                                    <p>请到客户端“主题--自定义配置--配置”中填入leancloud_appID和key</p>
+                                <%}%>
+                            <%}else if(site.customConfig.commentschoice=='twikoo'){%>
+                                <%if(site.customConfig.twikoo_id){%>
+                                    <%- include('./includes/twikoo') %>
+                                    <div class="clear"></div>
+                                <%}else{%>
+                                    <p>请到客户端“主题--自定义配置--配置”中填入cloudbase环境id</p>
+                                <%}%>
+                            <%}else if(site.customConfig.commentschoice=='default'){%>
+                                <%if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
+                                    <% if (commentSetting.commentPlatform === 'gitalk') { %>
+                                        <%- include('./includes/gitalk') %>
+                                    <% } %>
+                                    <% if (commentSetting.commentPlatform === 'disqus') { %>
+                                        <%- include('./includes/disqus') %>
+                                    <% } %>
+                                <% } %>
+                            <%}%>
+                        </div>
+                    </div>
+                    <!---------------------------- 评论系统👆 ------------------------->
+
+                    <!-------------- 底部栏信息👇 -------------------->
+                    <div style="margin-top:5vh">
+                        <%if(site.customConfig.menuposition=='top'){%>
+                        <%- include('./includes/footer') %>
+                        <%}%>
+                    </div>
+                    <!-------------- 底部栏信息👆 -------------------->
+                </div>
+                <!-- main标签，pjax渲染时加载以上内容👆 -->
+                <div class="col-md-2 col-lg-3">
+                </div>
+                <div id="bg">
+                </div>
+            </div>
+        <!--------------- 顶部菜单栏html👆--------->
+        <% } %>
+        </div>
+        <!-- aplayer播放器加载👇 -->
+            <%if(site.customConfig.aplayerchoice){%>
+            <%- include('./includes/aplayer') %>
+            <%}%>
+        <!-- aplayer播放器加载👆 -->
+    </div>
+    
+
+    <!-- 背景图加载方式👇 -->
+    <div id="bgchoice" style="display: none"><%= site.customConfig.bgchoice %>
+                </div>
+                <% if(site.customConfig.bgchoice == 'default'){ %>
+                <div id="bgurl" style="display:none"><%= site.customConfig['bgimage'] %></div>
+                <% } else{ %>
+                <div id="bgurl" style="display:none"><%= site.customConfig['bgimagelink'] %></div>
+                <% } %>
+    <!-- 背景图加载方式👆 -->
+</body>
+
+<script>
+    //初始化
+    //更换twikoo头像
+    setTimeout(replaceAvatar,1000);
+    setTimeout(replaceAvatar,2000);
+    setTimeout(replaceAvatar,8000);
+    // --------为每张图片添加懒加载（lazyload）标签-->懒加载功能 👇------------
+    imglazyloadinit()
+    lazyload();
+    //为文章内所有代码块添加代码复制功能 👇
+    codeinit();
+    // ------代码高亮显示功能-------------
+    hljs.initHighlightingOnLoad();
+    if (shareChoice)
+        shareInit();
+    if (donateChoice)
+        donateInit();
+</script>
+
+<!------------------ 加载live2d模型功能（看板娘）👇 ---------------->
+<% if (site.customConfig.live2d){ %>
+<script type="text/javascript">
+    var message_Path = '/live2d/'
+    var home_Path = document.getElementById("domainname").innerHTML + "/"; //此处修改为你的域名，必须带斜杠
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/live2d.js"></script>
+<script type="text/javascript" src="<%= themeConfig.domain %>/media/live2d/js/message.js%>"></script>
+<script type="text/javascript">
+    loadlive2d("live2d", "<%= themeConfig.domain %>/media/live2d/assets/tororo.model.json%>");
+</script>
+<% } %>
+<!------------------ 加载live2d模型功能（看板娘）👆 ---------------->
+
+
+<!----------------------- 返回顶部按钮功能👇 --------------------->
+<script>
+    $(function () {
+        $('.toggleContainer').click(function () {
+            $('html,body').animate({
+                scrollTop: '0px'
+            }, 800);
+        });
+        $(window).scroll(function () {
+            var st = $(window).scrollTop();
+            if (st > 30) {
+                $(".toggleContainer").fadeIn(400);
+            } else {
+                $(".toggleContainer").fadeOut(100);
+            }
+        });
+    });
+</script>
+<!----------------------- 返回顶部按钮功能👆 --------------------->
+
+
+<!------------ 加载全局背景图功能👇（开始时没有写好，这功能有点鸡肋/(ㄒoㄒ)/~~） -->
+<script>
+    var bgchoice = $('#bgchoice').html();
+    var bg = $('#bg');
+    var bgurl = document.getElementById("bgurl").innerHTML;
+    if (bgchoice == 'default')
+        for (var i = 0; i < 3; i++)
+            bgurl = bgurl.replace("\\", "/");
+    bg.css("background", "url('" + bgurl + "')");
+</script>
+<!------------ 加载全局背景图功能👆（开始时没有写好，这功能有点鸡肋/(ㄒoㄒ)/~~） -->
+
+
+
+<% if (site.customConfig.menuposition == 'left'){ %>
+<script src="<%= themeConfig.domain %>/media/js/index.js%>"></script>
+<% } %>
+
+<script>
+    //加载后的事件同步（阅读量、移动端评论等
+    window.onload = function () {
+    //代码块高亮渲染
+    document.querySelectorAll('pre code').forEach((block) => {
+            hljs.highlightBlock(block);
+    });
+    alert("hljs load ok")
+        getHotnum();
+        var sharepc = $(".share").eq(0).html();
+        $(".share").eq(1).html(sharepc);   //插件只会寻找一个分享标签渲染，所以需要手动添加到移动端
+        aplayerbtnInit();
+        $(".hljs").css({
+            "padding": "20px"
+        })
+    }
+</script>
+
+<!-- <script src="<%= themeConfig.domain %>/media/js/av-min.js%>"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3.13.0/dist/av-min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.6.1/dist/av-live-query-min.js"></script> -->

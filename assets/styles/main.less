@@ -1,0 +1,249 @@
+// @font-face {
+//    font-family: 'aqqxs';
+//    src: url('/media/fonts/FXAiQingQiXiangSuo.ttf');
+// }
+
+@media screen and (min-width:1200px) {
+    #tab1 {
+        position: fixed;
+        left: 3%;
+        z-index: 40;
+    }
+
+    .tab {
+        position: fixed;
+        z-index: 15;
+        top: 5%;
+        left: 15%;
+        width: 50px;
+        height: 50px;
+        margin-left: -35px;
+        margin-top: -35px;
+        cursor: pointer;
+    }
+
+    .tab .bars {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50px;
+        height: 100%;
+    }
+
+    .tab .bars span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: block;
+        width: 26px;
+        height: 3px;
+        margin-left: -13px;
+        margin-top: -1px;
+        background-color: #8dc1ca;
+        -webkit-transition: all 0.15s ease;
+        transition: all 0.15s ease;
+    }
+
+    .tab .bars span:first-child {
+        margin-top: -7px;
+    }
+
+    .tab .bars span:nth-child(2) {
+        -webkit-transition-delay: 0.075s;
+        transition-delay: 0.075s;
+    }
+
+    .tab .bars span:last-child {
+        margin-top: 5px;
+        -webkit-transition-delay: 0.15s;
+        transition-delay: 0.15s;
+    }
+
+    .tab:hover .bars span {
+        width: 30px;
+        margin-left: -15px;
+    }
+
+    .tab.active .bars span {
+        width: 0;
+        margin-left: -15px;
+    }
+
+    .tab.active .bars span:first-child {
+        margin-top: 0px;
+        width: 30px;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .tab.active .bars span:last-child {
+        margin-top: 0px;
+        width: 30px;
+        -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        -webkit-transition-delay: 0.15s;
+        transition-delay: 0.15s;
+    }
+
+    .tag-container,
+    #post-container {
+        min-height: 100vh;
+    }
+
+    //-----------------------浏览器滑动条美化-----------------------------------------//
+    body::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    body::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background-color: rgba(0, 0, 0, .01);
+        -webkit-box-shadow: inset 0 0 6px transparent
+    }
+
+    body::-webkit-scrollbar-track:hover {
+        background-color: rgba(0, 0, 0, .2);
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .4)
+    }
+
+    body::-webkit-scrollbar-track:active {
+        background-color: rgba(0, 0, 0, .2);
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .1)
+    }
+
+    body::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: #1ba784;
+        -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1)
+    }
+
+    body::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(0, 0, 0, .4);
+        -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1)
+    }
+
+    body::-webkit-scrollbar-thumb:active {
+        background: rgba(0, 0, 0, .4)
+    }
+
+    .side {
+        position: fixed;
+        width: 22%;
+        z-index: 20;
+        justify-content: center;
+        display: flex;
+        max-width: 350px;
+    }
+
+    #main {
+        justify-content: center;
+        text-align: center;
+        z-index: 10;
+    }
+
+    #content {
+        width: 100%;
+        position: relative;
+    }
+
+    #bg {
+        width: 100%;
+        /*宽度铺满屏幕*/
+        min-height: 100vh;
+        padding-top: 52.734%;
+        /*图片高度除以宽度，得到此值*/
+        background: url("") center center;
+        /*两个center分别为水平和垂直方向的对齐方式*/
+        background-size: 100%;
+        /*背景水平铺满*/
+        filter: blur(10px);
+        /*虚化值，越大越模糊*/
+        position: fixed;
+    }
+
+    .nav-large {
+        display: block;
+        position: absolute;
+        /*设置内容层绝对定位*/
+        width: 100%;
+        text-align: center;
+        z-index: 2;
+        /*将内容至于上层*/
+        min-height: 100vh;
+    }
+
+    .mobilebar{
+        display: none;
+    }
+
+    .topindex{
+        width:60vw;
+        margin-top:50px;
+        left:25vw;
+    }
+}
+
+
+@media screen and (max-width: 1200px) {
+    html,body{height:auto}
+    html,body{overflow-x:hidden;overflow-y:scroll;}
+
+    #content{
+        max-width: 100vw;
+    }
+
+    #landlord {
+        display: none;
+    }
+
+    .mobilebar{
+        display: block;
+    }
+
+    .pagination-container {
+        margin-top: 30px;
+        display: flex;
+    }
+
+    .pagination-container a {
+        width: 50%;
+        border: solid grey;
+        color: black;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 20%;
+        background: lightblue;
+        font-weight: bold;
+    }
+
+    .pagination-container .mobile-nextpage {
+        border-radius: 0 5px 5px 0;
+    }
+
+    .pagination-container .mobile-prevpage {
+        border-radius: 5 0px 0px 5px;
+    }
+
+    .tag {
+        width: 40%;
+    }
+}
+
+@import "./components/side.less";
+@import "./components/pagination.less";
+@import "./components/post-list.less";
+@import "./components/post.less";
+@import "./components/archives-detail.less";
+@import "./components/archives.less";
+@import "./components/post-detail.less";
+@import "./components/mobile.less";
+@import "./components/friends.less";
+@import "./components/talk-detail.less";
+@import "./components/tag.less";
+@import "./components/tag-detail.less";
+@import "./components/aplayer.less";
+@import "./components/twikoo.less";
+@import "./components/valine.less";
