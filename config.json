@@ -1,8 +1,8 @@
 {
   "name": "fog",
-  "version": "1.2-black_cat",
+  "version": "gitCat1.2.1",
   "author": "quansen88",
-  "repository": "https://github.com/quansen88/fog",
+  "repository": "https://github.com/quansen88/fog/tree/gitCat",
   "customConfig": [ {
     "name": "live2d",
     "label": "是否开启看板娘",
