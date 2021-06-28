@@ -9,7 +9,7 @@
 
 主题Github下载地址：[github下载]（<https://github.com/quansen88/fog> ）
 
-主题国内码云下载地址：（<https://gitee.com/ericam/gridea-theme-fog> ）
+主题国内码云下载地址：（<https://github.com/quansen88/fog> ）
 
 使用文档：[https://ericam.top/post/fog-zhu-ti-shi-yong-bang-zhu/](https://ericam.top/post/fog-zhu-ti-shi-yong-bang-zhu/)
 
