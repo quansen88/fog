@@ -7,7 +7,7 @@
 
 主题介绍：[Gridea主题Fog](<https://ericam.top/post/gridea-zhu-ti-fog-geng-xin-ri-zhi/> )
 
-主题Github下载地址：[github下载]（<https://github.com/850552586/gridea-theme-fog> ）
+主题Github下载地址：[github下载]（<https://github.com/quansen88/fog> ）
 
 主题国内码云下载地址：（<https://gitee.com/ericam/gridea-theme-fog> ）
 
